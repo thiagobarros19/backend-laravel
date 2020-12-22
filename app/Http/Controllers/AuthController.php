@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\User;
 
@@ -22,6 +23,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'username' => 'required|string',
             'password' => 'required|string|confirmed'
         ]);
 
@@ -51,6 +53,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
+            'username' => 'required|string',
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
