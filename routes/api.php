@@ -15,3 +15,10 @@ Route::group([
         Route::get('user', 'AuthController@user');
     });
 });
+
+Route::group([
+    'prefix' => 'product'
+], function(){
+    Route::post('create', 'ProductController@create');
+    Route::get('products', 'ProductController@products');
+});
