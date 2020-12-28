@@ -10,12 +10,14 @@ class ProductController extends Controller
 {
     public function create(Request $request){
 
-        DB::table('product')->insert([
+        $product = new Product([
             'name' => $request->name,
             'image' => $request->image,
             'price' => $request->price,
             'description' => $request->description,
         ]);
+
+        $product->save();
 
         return response()->json([
             'message' => 'Successfully created product!'
@@ -23,6 +25,6 @@ class ProductController extends Controller
     }
 
     public function products(){
-        return DB::table('product')->get();
+        return DB::table('products')->get();
     }
 }

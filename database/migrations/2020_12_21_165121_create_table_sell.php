@@ -13,7 +13,7 @@ class CreateTableSell extends Migration
      */
     public function up()
     {
-        Schema::create('sell', function (Blueprint $table) {
+        Schema::create('sells', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->float('total');
@@ -30,6 +30,6 @@ class CreateTableSell extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sell');
+        Schema::dropIfExists('sells');
     }
 }

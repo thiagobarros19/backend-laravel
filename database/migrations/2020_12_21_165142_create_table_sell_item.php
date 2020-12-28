@@ -13,16 +13,17 @@ class CreateTableSellItem extends Migration
      */
     public function up()
     {
-        Schema::create('sell_item', function (Blueprint $table) {
+        Schema::create('sell_items', function (Blueprint $table) {
             $table->id();
             $table->integer('sell_id');
             $table->integer('product_id');
             $table->integer('amount');
             $table->double('unit_price');
             $table->double('total');
+            $table->timestamps();
 
-            $table->foreign('sell_id')->references('id')->on('sell');
-            $table->foreign('product_id')->references('id')->on('product');
+            $table->foreign('sell_id')->references('id')->on('sells');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -33,6 +34,6 @@ class CreateTableSellItem extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sell_item');
+        Schema::dropIfExists('sell_items');
     }
 }

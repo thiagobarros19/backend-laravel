@@ -22,3 +22,9 @@ Route::group([
     Route::post('create', 'ProductController@create');
     Route::get('products', 'ProductController@products');
 });
+
+Route::group([
+    'prefix' => 'sell'
+], function(){
+    Route::post('create', 'SellController@create');
+});
