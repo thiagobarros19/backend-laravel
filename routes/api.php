@@ -1,4 +1,6 @@
 <?php
+
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +21,12 @@ Route::group([
 Route::group([
     'prefix' => 'product'
 ], function(){
-    Route::post('create', 'ProductController@create');
-    Route::get('products', 'ProductController@products');
+    Route::post('create', 'ProductController@create')->middleware('auth:api');
+    Route::get('products', 'ProductController@products')->middleware('auth:api');
 });
 
 Route::group([
     'prefix' => 'sell'
 ], function(){
-    Route::post('create', 'SellController@create');
+    Route::post('create', 'SellController@create')->middleware('auth:api');
 });
