@@ -4,23 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\User;
 
 class AuthController extends Controller
 {
-    /**
-     * Create user
-     *
-     * @param  [string] name
-     * @param  [string] email
-     * @param  [string] password
-     * @param  [string] password_confirmation
-     * @return [string] message
-     */
-    public function signup(Request $request)
-    {
+
+    public function signup(Request $request){
         $request->validate([
             'name' => 'required|string',
             'username' => 'required|string',
@@ -40,18 +30,7 @@ class AuthController extends Controller
         ], 201);
     }
 
-    /**
-     * Login user and create token
-     *
-     * @param  [string] username
-     * @param  [string] password
-     * @param  [boolean] remember_me
-     * @return [string] access_token
-     * @return [string] token_type
-     * @return [string] expires_at
-     */
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -84,13 +63,7 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Logout user (Revoke the token)
-     *
-     * @return [string] message
-     */
-    public function logout(Request $request)
-    {
+    public function logout(Request $request){
         $request->user()->token()->revoke();
 
         return response()->json([
@@ -98,13 +71,7 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Get the authenticated User
-     *
-     * @return [json] user object
-     */
-    public function user(Request $request)
-    {
+    public function user(Request $request){
         return response()->json($request->user());
     }
 }
