@@ -23,9 +23,9 @@ class SellController extends Controller
             foreach($request->items as $item){
                 $sellItem = new SellItem([
                     'sell_id' => $sell->id,
-                    'product_id' => $item['product_id'],
+                    'product_id' => $item['id'],
                     'amount' => $item['amount'],
-                    'unit_price' => $item['unit_price'],
+                    'unit_price' => $item['price'],
                     'total' => $item['total'],
                 ]);
 
